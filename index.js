@@ -9,7 +9,7 @@ http
       data.push(chunk);
     });
     req.on('end', () => {
-      if (req.headers['X-GitHub-Event'] === 'push') {
+      if (req.headers['x-github-event'] === 'push') {
         const json = JSON.parse(data.join(''));
         const {
           ref,
