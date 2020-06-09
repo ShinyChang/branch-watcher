@@ -42,7 +42,7 @@ const notifySlack = ({ commit, repo, branch }) =>
           type: "section",
           text: {
             type: "mrkdwn",
-            text: `<${commit.url}|${commit.message}>`,
+            text: `<${commit.url}|${commit.message.split('\n')[0]}>`,
           },
         },
         {
