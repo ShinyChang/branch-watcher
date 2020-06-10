@@ -14,11 +14,11 @@ http
         const {
           ref,
           head_commit,
-          repository: { full_name },
+          repository: { name },
         } = json;
         const branch = ref.replace("refs/heads/", "");
         if (branch === process.env.BRANCH_NAME) {
-          notifySlack({ repo: full_name, branch, commit: head_commit });
+          notifySlack({ repo: name, branch, commit: head_commit });
         }
       }
       res.writeHead(200, { "Content-Type": "text/html" });
@@ -62,7 +62,7 @@ const notifySlack = ({ commit, repo, branch }) =>
             },
             {
               type: "mrkdwn",
-              text: `*Committer:*\n${commit.committer.name}`,
+              text: `*Author:*\n${commit.author.name}`,
             },
           ],
         },
